@@ -13,20 +13,19 @@ public class Any_base_to_multiplication {
         System.out.println(d);
     }
     public static int getProduct(int b, int n1, int n2){
-        int ans1 = 0;
-        int p = 1;
+        int ans = 0;
+        int mul = 1;
+
         while(n2 != 0){
             int r2 = n2 % 10;
 
+            int curr = getProductWithSingleDigit(b, n1, r2) * mul;
+            mul *= 10;
+
+            ans = getSum(b, ans, curr);
             n2 = n2 / 10;
-
-            int sprd = getProductWithSingleDigit(b, n1, r2);
-            ans1 = getSum(b, n1 ,sprd * p);
-            p = p * 10;
         }
-
-
-        return ans1;
+        return ans;
     }
     public static int getProductWithSingleDigit(int b, int n1, int r2){
         
@@ -37,37 +36,36 @@ public class Any_base_to_multiplication {
             int r1 = n1 % 10;
             
                 
-                int mul = r1 * r2 + c;
-                int digit = mul % b;
-                c = mul / b;
+            int mul = r1 * r2 + c;
+            int digit = mul % b;
+            c = mul / b;
 
-                n1 = n1 / 10;
-
-                ans = ans + digit * (int)Math.pow(10, count);
-                count++;
-        }
-        return ans;
-    }
-    public static int getSum(int b, int n1, int n2){
-        int c = 0;
-        int ans = 0;
-        int count = 0;
-
-        while(n1 != 0 || n2 != 0 || c != 0){
-            int r1 = n1 % 10;
-            int r2 = n2 % 10;
-
-            int sum = r1 + r2 +c;
-            int digit = sum % b;
-            c = sum / b;
-            
             n1 = n1 / 10;
-            n2 = n2 / 10;
 
             ans = ans + digit * (int)Math.pow(10, count);
             count++;
         }
         return ans;
+    }
+    public static int getSum(int b, int n1, int n2){
+        int ans = 0;
+        int c = 0;
+        int count = 0;
+        while(n1 != 0 || n2 != 0|| c != 0){
+            int r1 = n1 % 10;
+            int r2 = n2 % 10;
+
+            int add = r1 + r2 + c;
+            int digit = add % b;
+            c = add / b;
+
+            n1 = n1/ 10;
+            n2 = n1 / 10;
+
+            ans = ans + digit * (int)Math.pow(10, count);
+            count++;
+        }
+        return ans; 
     }
     
 }
