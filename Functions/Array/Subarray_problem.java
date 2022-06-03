@@ -1,4 +1,4 @@
-package Functions.Array;
+// package Functions.Array;
 
 import java.util.Scanner;
 
@@ -26,7 +26,7 @@ public class Subarray_problem {
         // }
         // }
 
-        // 2ND METHOD
+        // 2ND METHOD not in use 
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = sc.nextInt();

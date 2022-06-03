@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-
+package Functions;
 /**
  * Fibonacci_series
  */
